@@ -1,4 +1,5 @@
 HEAD
+	+ Restart dns after provision to properly write dlz configuration
 	+ Raise exception if during the provision either the domain
 	  administrator user or the domain administrator group are
 	  incorrectly mapped

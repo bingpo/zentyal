@@ -796,6 +796,7 @@ sub _setConf
     if (not $prov->isProvisioned() or $self->get('need_reprovision')) {
         $prov->provision();
         $self->unset('need_reprovision');
+        $self->set('just_provisioned');
     }
 
     $self->writeSambaConfig();
@@ -836,6 +837,26 @@ sub _setConf
             $user->save();
         }
     }
+}
+
+# Method: _postServiceHook
+#
+#   Override this method to try to regen dns conf after reprovision
+#
+# Overrides:
+#
+#   <EBox::Module::Service::_postServiceHook>
+#
+sub _postServiceHook
+{
+    my ($self, $enabled) = @_;
+
+    if ($enabled and $self->get('just_provisioned')) {
+        $self->unset('just_provisioned');
+        $self->global()->modInstance('dns')->_regenConfig();
+    }
+
+    return $self->SUPER::_postServiceHook($enabled);
 }
 
 sub _adcMode
