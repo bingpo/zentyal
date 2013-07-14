@@ -49,8 +49,10 @@ Depends: python,
          libcups2,
          zlib1g,
          ${misc:Depends}
-Replaces: samba4-common-bin, ldb-tools, tdb-tools
+Replaces: samba4-common-bin, ldb-tools, tdb-tools, libdcerpc0, libgensec0, libndr-standard0, libndr0, libsamba-credentials0, libsamba-hostconfig0, libsamba-util0, libsamdb0, libsmbclient-raw0, samba-common, samba-dsdb-modules, samba-common-bin, libldb1
 Breaks: samba4-common-bin, ldb-tools, tdb-tools
+Provides: libdcerpc0, libgensec0, libndr-standard0, libndr0, libsamba-credentials0, libsamba-hostconfig0, libsamba-util0, libsamdb0, libsmbclient-raw0, samba-common, samba-dsdb-modules, samba-common-bin, libldb1
+Conflicts: libdcerpc0, libgensec0, libndr-standard0, libndr0, libsamba-credentials0, libsamba-hostconfig0, libsamba-util0, libsamdb0, libsmbclient-raw0, samba-common, samba-dsdb-modules, samba-common-bin, libldb1
 Description: SMB/CIFS file, NT domain and active directory server (version 4)
  Samba is an implementation of the SMB/CIFS protocol for Unix systems,
  providing support for cross-platform file sharing with Microsoft Windows, OS X,
